@@ -16,7 +16,7 @@ class DivisiController extends Controller
      */
     public function index()
     {
-        $divisis = Divisi::orderBy('nama')->paginate(5);
+        $divisis = Divisi::orderBy('nama')->withCount('jabatans')->paginate(5);
         return view('divisi.index', compact('divisis'));
     }
 

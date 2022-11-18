@@ -32,7 +32,7 @@
                             <tr>
                                 <td>{{ $divisi->nama }}</td>
                                 <td>{{ $divisi->jml_pgw }}</td>
-                                <td>{{ $divisi->jabatans->count() }}</td>
+                                <td>{{ $divisi->jabatans_count }}</td>
                                 <td>
                                     <form action="{{ route('divisi.destroy', $divisi->id) }}" method="Post">
                                         <a class="btn btn-secondary btn-sm"
