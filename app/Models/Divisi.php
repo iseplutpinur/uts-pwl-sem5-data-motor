@@ -15,4 +15,9 @@ class Divisi extends Model
     {
         return $this->hasMany(Jabatan::class, 'divisi_id', 'id');
     }
+
+    public function pegawais()
+    {
+        return $this->hasManyThrough(Pegawai::class, Jabatan::class, 'divisi_id', 'jabatan_id');
+    }
 }

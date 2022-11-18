@@ -54,13 +54,22 @@ class DivisiController extends Controller
      */
     public function show(Divisi $divisi)
     {
-        $pegawais = Pegawai::join('jabatans', 'jabatans.id', '=', 'pegawais.jabatan_id')
-            ->join('divisi', 'divisi.id', '=', 'jabatans.divisi_id')
-            ->where('jabatans.divisi_id', $divisi->id)->orderBy('nip')
-            ->paginate(3, 'pegawais.*', 'pegawai');
+        // hasManyThrough
+        $pegawais = $divisi->pegawais()->with('jabatan')->orderBy('nip')
+            ->paginate(3, ['pegawais.*'], 'pegawai');
 
-        $jabatans = Jabatan::where('divisi_id', $divisi->id)->orderBy('nama')
+        // konvensional
+        // $pegawais = Pegawai::join('jabatans', 'jabatans.id', '=', 'pegawais.jabatan_id')
+        //     ->join('divisis', 'divisis.id', '=', 'jabatans.divisi_id')
+        //     ->where('jabatans.divisi_id', $divisi->id)->orderBy('nip')
+        //     ->paginate(3, ['*'], 'pegawai');
+
+        $jabatans = $divisi->jabatans()->orderBy('nama')
             ->paginate(3, 'jabatans.*', 'jabatan');
+
+        // konvensional
+        // $jabatans = Jabatan::where('divisi_id', $divisi->id)->orderBy('nama')
+        //     ->paginate(3, 'jabatans.*', 'jabatan');
 
         return view('divisi.show', compact('divisi', 'pegawais', 'jabatans'));
     }
