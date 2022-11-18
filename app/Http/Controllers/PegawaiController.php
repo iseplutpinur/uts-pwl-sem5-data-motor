@@ -16,7 +16,8 @@ class PegawaiController extends Controller
      */
     public function index()
     {
-        $pegawais = Pegawai::orderBy('nip')->paginate(10);
+        $pegawais = Pegawai::with(['jabatan', 'jabatan.divisi'])->orderBy('nip')->paginate(10);
+        // $pegawais = Pegawai::orderBy('nip')->paginate(100);
         return view('pegawai.index', compact('pegawais'));
     }
 
@@ -27,7 +28,7 @@ class PegawaiController extends Controller
      */
     public function create()
     {
-        $jabatans = Jabatan::orderBy('nama')->get();
+        $jabatans = Jabatan::with('divisi')->orderBy('nama')->get();
         return view('pegawai.create', compact('jabatans'));
     }
 
@@ -55,17 +56,17 @@ class PegawaiController extends Controller
 
         // tambah jumlah pegawai di jabatan dan divisi
         // set jml_pgw jabatan
-        $prod = Jabatan::find($request->jabatan_id);
-        if ($prod) {
-            $prod->jml_pgw += 1;
-            $prod->save();
+        $jabatan = Jabatan::find($request->jabatan_id);
+        if ($jabatan) {
+            $jabatan->jml_pgw += 1;
+            $jabatan->save();
         }
 
-        if ($prod->divisi) {
+        if ($jabatan->divisi) {
             // set jml_pgw divisi
-            $fak = $prod->divisi;
-            $fak->jml_pgw += 1;
-            $fak->save();
+            $divisi = $jabatan->divisi;
+            $divisi->jml_pgw += 1;
+            $divisi->save();
         }
 
         DB::commit();
@@ -118,36 +119,36 @@ class PegawaiController extends Controller
         DB::beginTransaction();
         // hapus jumlah pegawai di jabatan dan divisi
         // set jml_pgw jabatan 
-        $prod = Jabatan::find($pegawai->jabatan_id);
-        if ($prod) {
-            $prod->jml_pgw -= 1;
-            $prod->save();
+        $jabatan = $pegawai->jabatan;
+        if ($jabatan) {
+            $jabatan->jml_pgw -= 1;
+            $jabatan->save();
         }
 
-        if ($prod->divisi) {
+        if ($jabatan->divisi) {
             // set jml_pgw divisi
-            $fak = $prod->divisi;
-            $fak->jml_pgw -= 1;
-            $fak->save();
+            $divisi = $jabatan->divisi;
+            $divisi->jml_pgw -= 1;
+            $divisi->save();
+        }
+
+        // tambah jumlah yang baru pegawai di jabatan dan divisi
+        // set jml_pgw jabatan
+        $jabatan = Jabatan::find($request->jabatan_id);
+        if ($jabatan) {
+            $jabatan->jml_pgw += 1;
+            $jabatan->save();
+        }
+
+        if ($jabatan->divisi) {
+            // set jml_pgw divisi
+            $divisi = $jabatan->divisi;
+            $divisi->jml_pgw += 1;
+            $divisi->save();
         }
 
         // simpan data pegawai
         $pegawai->fill($request->post())->save();
-
-        // tambah jumlah yang baru pegawai di jabatan dan divisi
-        // set jml_pgw jabatan
-        $prod = Jabatan::find($request->jabatan_id);
-        if ($prod) {
-            $prod->jml_pgw += 1;
-            $prod->save();
-        }
-
-        if ($prod->divisi) {
-            // set jml_pgw divisi
-            $fak = $prod->divisi;
-            $fak->jml_pgw += 1;
-            $fak->save();
-        }
 
         DB::commit();
         return redirect()->route('pegawai.index')->with('success', 'Data berhasil diubah');
@@ -164,17 +165,17 @@ class PegawaiController extends Controller
         DB::beginTransaction();
         // hapus jumlah pegawai di jabatan dan divisi
         // set jml_pgw jabatan 
-        $prod = Jabatan::find($pegawai->jabatan_id);
-        if ($prod) {
-            $prod->jml_pgw -= 1;
-            $prod->save();
+        $jabatan = Jabatan::find($pegawai->jabatan_id);
+        if ($jabatan) {
+            $jabatan->jml_pgw -= 1;
+            $jabatan->save();
         }
 
-        if ($prod->divisi) {
+        if ($jabatan->divisi) {
             // set jml_pgw divisi
-            $fak = $prod->divisi;
-            $fak->jml_pgw -= 1;
-            $fak->save();
+            $divisi = $jabatan->divisi;
+            $divisi->jml_pgw -= 1;
+            $divisi->save();
         }
 
         // hapus pegawai
