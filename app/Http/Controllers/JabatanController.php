@@ -16,7 +16,7 @@ class JabatanController extends Controller
      */
     public function index()
     {
-        $jabatans = Jabatan::orderBy('nama')->paginate(5);
+        $jabatans = Jabatan::orderBy('nama')->with('divisi')->paginate(5);
         return view('jabatan.index', compact('jabatans'));
     }
 
@@ -56,7 +56,7 @@ class JabatanController extends Controller
      */
     public function show(Jabatan $jabatan)
     {
-        $pegawais = Pegawai::where('jabatan_id', $jabatan->id)->orderBy('nip')
+        $pegawais = $jabatan->pegawais()->orderBy('nip')
             ->paginate(3);
         return view('jabatan.show', compact('jabatan', 'pegawais'));
     }
