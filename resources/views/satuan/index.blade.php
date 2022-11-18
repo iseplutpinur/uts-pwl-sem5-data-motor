@@ -23,6 +23,7 @@
                         <tr>
                             <th>Nama</th>
                             <th>Jumlah Barang</th>
+                            <th>Total Stok</th>
                             <th width="280px">Aksi</th>
                         </tr>
                     </thead>
@@ -31,6 +32,7 @@
                             <tr>
                                 <td>{{ $satuan->nama }}</td>
                                 <td>{{ $satuan->barangs_count }}</td>
+                                <td>{{ $satuan->barangs_sum_stok }}</td>
                                 <td>
                                     <form action="{{ route('satuan.destroy', $satuan->id) }}" method="Post">
                                         <a class="btn btn-secondary btn-sm"
