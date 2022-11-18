@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @section('title')
-    Ubah Divisi
+    Ubah Satuan
 @endsection
 
 @section('content')
@@ -13,21 +13,21 @@
         @endif
         <div class="card">
             <div class="card-header d-md-flex flex-row justify-content-between">
-                <h5 class="card-title">Ubah Divisi</h5>
+                <h5 class="card-title">Ubah Satuan</h5>
                 <div>
                     <a class="btn btn-secondary" href="{{ URL::previous() }}"> Kembali</a>
                 </div>
             </div>
             <div class="card-body">
-                <form action="{{ route('divisi.update', $divisi->id) }}" method="POST" enctype="multipart/form-data"
+                <form action="{{ route('satuan.update', $satuan->id) }}" method="POST" enctype="multipart/form-data"
                     id="mainform">
                     @csrf
                     @method('PUT')
                     <div class="row mb-3">
-                        <label for="nama" class="col-sm-2 col-form-label">Nama Divisi</label>
+                        <label for="nama" class="col-sm-2 col-form-label">Nama Satuan</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="nama" value="{{ $divisi->nama }}"
-                                id="nama" required placeholder="Silahkan masukan nama divisi">
+                            <input type="text" class="form-control" name="nama" value="{{ $satuan->nama }}"
+                                id="nama" required placeholder="Silahkan masukan nama satuan">
                         </div>
                         <div class="col-12">
                             @error('nama')

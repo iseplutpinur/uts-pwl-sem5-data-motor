@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @section('title')
-    Tambah Divisi
+    Tambah Satuan
 @endsection
 
 @section('content')
@@ -14,19 +14,19 @@
 
         <div class="card">
             <div class="card-header d-md-flex flex-row justify-content-between">
-                <h5 class="card-title">Tambah Divisi</h5>
+                <h5 class="card-title">Tambah Satuan</h5>
                 <div>
                     <a class="btn btn-secondary" href="{{ URL::previous() }}"> Kembali</a>
                 </div>
             </div>
             <div class="card-body">
-                <form action="{{ route('divisi.store') }}" method="POST" enctype="multipart/form-data" id="mainform">
+                <form action="{{ route('satuan.store') }}" method="POST" enctype="multipart/form-data" id="mainform">
                     @csrf
                     <div class="row mb-3">
-                        <label for="nama" class="col-sm-2 col-form-label">Nama Divisi</label>
+                        <label for="nama" class="col-sm-2 col-form-label">Nama Satuan</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" name="nama" id="nama" required
-                                placeholder="Silahkan masukan nama divisi">
+                                placeholder="Silahkan masukan nama satuan">
                         </div>
                         <div class="col-12">
                             @error('nama')

@@ -13,11 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('divisis', function (Blueprint $table) {
+        Schema::create('barangs', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('satuan_id', false, true)->nullable()->default(null);
+            $table->string('kode')->unique();
             $table->string('nama');
-            $table->integer('jml_pgw')->default(0);
+            $table->integer('stok')->default(0);
             $table->timestamps();
+
+            $table->foreign('satuan_id')
+                ->references('id')->on('satuans')
+                ->nullOnDelete()
+                ->cascadeOnUpdate();
         });
     }
 
@@ -28,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('divisis');
+        Schema::dropIfExists('barangs');
     }
 };

@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @section('title')
-    Data Jabatan
+    Data Barang
 @endsection
 
 @section('content')
@@ -12,40 +12,42 @@
 
         <div class="card">
             <div class="card-header d-md-flex flex-row justify-content-between">
-                <h5 class="card-title">Data Jabatan</h5>
+                <h5 class="card-title">Data Barang</h5>
                 <div>
-                    <a class="btn btn-success" href="{{ route('jabatan.create') }}"> Tambah Jabatan</a>
+                    <a class="btn btn-success" href="{{ route('barang.create') }}"> Tambah Barang</a>
                 </div>
             </div>
             <div class="card-body">
                 <table class="table table-hover">
                     <thead>
                         <tr>
+                            <th>Kode</th>
                             <th>Nama</th>
-                            <th>Divisi</th>
-                            <th>Jumlah Pegawai</th>
+                            <th>Stok</th>
+                            <th>Satuan</th>
                             <th width="280px">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($jabatans as $jabatan)
+                        @foreach ($barangs as $barang)
                             <tr>
-                                <td>{{ $jabatan->nama }}</td>
+                                <td>{{ $barang->kode }}</td>
+                                <td>{{ $barang->nama }}</td>
+                                <td class="text-right">{{ $barang->stok }}</td>
                                 <td>
-                                    @if ($jabatan->divisi)
+                                    @if ($barang->satuan)
                                         <a class="text-decoration-none"
-                                            href="{{ route('divisi.show', $jabatan->divisi->id) }}">
-                                            {{ $jabatan->divisi->nama }}
+                                            href="{{ route('satuan.show', $barang->satuan->id) }}">
+                                            {{ $barang->satuan->nama }}
                                         </a>
                                     @endif
                                 </td>
-                                <td>{{ $jabatan->jml_pgw }}</td>
                                 <td>
-                                    <form action="{{ route('jabatan.destroy', $jabatan->id) }}" method="Post">
+                                    <form action="{{ route('barang.destroy', $barang->id) }}" method="Post">
                                         <a class="btn btn-secondary btn-sm"
-                                            href="{{ route('jabatan.show', $jabatan->id) }}">Lihat</a>
+                                            href="{{ route('barang.show', $barang->id) }}">Lihat</a>
                                         <a class="btn btn-primary btn-sm"
-                                            href="{{ route('jabatan.edit', $jabatan->id) }}">Ubah</a>
+                                            href="{{ route('barang.edit', $barang->id) }}">Ubah</a>
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm"
@@ -56,7 +58,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                {!! $jabatans->links('pagination::bootstrap-5') !!}
+                {!! $barangs->links('pagination::bootstrap-5') !!}
             </div>
         </div>
     </div>

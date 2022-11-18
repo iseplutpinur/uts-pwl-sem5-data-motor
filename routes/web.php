@@ -1,9 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PegawaiController;
-use App\Http\Controllers\JabatanController;
-use App\Http\Controllers\DivisiController;
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\SatuanController;
 
 
 /*
@@ -17,8 +16,7 @@ use App\Http\Controllers\DivisiController;
 |
 */
 // rute default pegawai
-Route::get('/', [PegawaiController::class, 'index'])->name('home');
+Route::get('/', [BarangController::class, 'index'])->name('home');
 
-Route::resource('/pegawai', PegawaiController::class);
-Route::resource('/jabatan', JabatanController::class);
-Route::resource('/divisi', DivisiController::class);
+Route::resource('/barang', BarangController::class);
+Route::resource('/satuan', SatuanController::class);
