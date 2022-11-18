@@ -32,7 +32,7 @@
                             <tr>
                                 <td>{{ $satuan->nama }}</td>
                                 <td>{{ $satuan->barangs_count }}</td>
-                                <td>{{ $satuan->barangs_sum_stok }}</td>
+                                <td>{{ $satuan->barangs_sum_stok ?? 0 }}</td>
                                 <td>
                                     <form action="{{ route('satuan.destroy', $satuan->id) }}" method="Post">
                                         <a class="btn btn-secondary btn-sm"

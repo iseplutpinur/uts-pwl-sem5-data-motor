@@ -14,7 +14,9 @@ class SatuanController extends Controller
      */
     public function index()
     {
-        $satuans = Satuan::orderBy('nama')->withCount('barangs')->withSum('barangs', 'stok')->paginate(5);
+        $satuans = Satuan::orderBy('nama')
+            ->withCount('barangs')
+            ->withSum('barangs', 'stok')->paginate(5);
         return view('satuan.index', compact('satuans'));
     }
 
