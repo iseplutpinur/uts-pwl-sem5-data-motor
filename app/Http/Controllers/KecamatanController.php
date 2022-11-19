@@ -16,7 +16,7 @@ class KecamatanController extends Controller
     {
         $kecamatans = Kecamatan::orderBy('nama')
             ->withCount('kelurahans')
-            ->withSum('kelurahans', 'jml_pend')->paginate(5);
+            ->withSum('kelurahans', 'jml_pend')->paginate(10);
         return view('kecamatan.index', compact('kecamatans'));
     }
 
