@@ -42,7 +42,7 @@
     <div class="container">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
             <p class="text-muted">&copy; 2022 UTS Pemrograman Web Lanjut |
-                Isep Lutpi Nur 2113191079</p>
+                Handip Yusuf Kurniawan 2113201027</p>
         </footer>
     </div>
     <!-- Optional JavaScript; choose one of the two! -->
