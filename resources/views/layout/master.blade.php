@@ -16,7 +16,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{ url('') }}">CRUD Data Barang</a>
+            <a class="navbar-brand" href="{{ url('') }}">CRUD Data Kelurahan Di Kota Bandung</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -25,12 +25,12 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('home') || request()->routeIs('barang.index') ? 'active' : '' }}"
-                            aria-current="page" href="{{ route('barang.index') }}">Barang</a>
+                        <a class="nav-link {{ request()->routeIs('home') || request()->routeIs('kelurahan.index') ? 'active' : '' }}"
+                            aria-current="page" href="{{ route('kelurahan.index') }}">Kelurahan</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('satuan.index') ? 'active' : '' }}" aria-current="page"
-                            href="{{ route('satuan.index') }}">Satuan</a>
+                        <a class="nav-link {{ request()->routeIs('kecamatan.index') ? 'active' : '' }}"
+                            aria-current="page" href="{{ route('kecamatan.index') }}">Kecamatan</a>
                     </li>
                 </ul>
             </div>

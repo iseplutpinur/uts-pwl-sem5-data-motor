@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @section('title')
-    Data Satuan
+    Data Kecamatan
 @endsection
 
 @section('content')
@@ -12,9 +12,9 @@
 
         <div class="card">
             <div class="card-header d-md-flex flex-row justify-content-between">
-                <h5 class="card-title">Data Satuan</h5>
+                <h5 class="card-title">Data Kecamatan</h5>
                 <div>
-                    <a class="btn btn-success" href="{{ route('satuan.create') }}"> Tambah Satuan</a>
+                    <a class="btn btn-success" href="{{ route('kecamatan.create') }}"> Tambah Kecamatan</a>
                 </div>
             </div>
             <div class="card-body">
@@ -22,23 +22,23 @@
                     <thead>
                         <tr>
                             <th>Nama</th>
-                            <th>Jumlah Barang</th>
-                            <th>Total Stok</th>
+                            <th>Jumlah Kelurahan</th>
+                            <th>Total Penduduk</th>
                             <th width="280px">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($satuans as $satuan)
+                        @foreach ($kecamatans as $kecamatan)
                             <tr>
-                                <td>{{ $satuan->nama }}</td>
-                                <td>{{ $satuan->barangs_count }}</td>
-                                <td>{{ $satuan->barangs_sum_stok ?? 0 }}</td>
+                                <td>{{ $kecamatan->nama }}</td>
+                                <td>{{ $kecamatan->kelurahans_count }}</td>
+                                <td>{{ $kecamatan->kelurahans_sum_jml_pend ?? 0 }}</td>
                                 <td>
-                                    <form action="{{ route('satuan.destroy', $satuan->id) }}" method="Post">
+                                    <form action="{{ route('kecamatan.destroy', $kecamatan->id) }}" method="Post">
                                         <a class="btn btn-secondary btn-sm"
-                                            href="{{ route('satuan.show', $satuan->id) }}">Lihat</a>
+                                            href="{{ route('kecamatan.show', $kecamatan->id) }}">Lihat</a>
                                         <a class="btn btn-primary btn-sm"
-                                            href="{{ route('satuan.edit', $satuan->id) }}">Ubah</a>
+                                            href="{{ route('kecamatan.edit', $kecamatan->id) }}">Ubah</a>
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"
@@ -49,7 +49,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                {!! $satuans->links('pagination::bootstrap-5') !!}
+                {!! $kecamatans->links('pagination::bootstrap-5') !!}
             </div>
         </div>
     </div>
