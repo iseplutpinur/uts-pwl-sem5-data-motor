@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\KelurahanController;
-use App\Http\Controllers\KecamatanController;
+use App\Http\Controllers\MotorController;
+use App\Http\Controllers\MerekController;
 
 
 /*
@@ -16,7 +16,7 @@ use App\Http\Controllers\KecamatanController;
 |
 */
 // rute default pegawai
-Route::get('/', [KelurahanController::class, 'index'])->name('home');
+Route::get('/', [MotorController::class, 'index'])->name('home');
 
-Route::resource('/kelurahan', KelurahanController::class);
-Route::resource('/kecamatan', KecamatanController::class);
+Route::resource('/motor', MotorController::class);
+Route::resource('/merek', MerekController::class);

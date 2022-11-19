@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @section('title')
-    Data Kelurahan
+    Data Motor
 @endsection
 
 @section('content')
@@ -12,9 +12,9 @@
 
         <div class="card">
             <div class="card-header d-md-flex flex-row justify-content-between">
-                <h5 class="card-title">Data Kelurahan</h5>
+                <h5 class="card-title">Data Motor</h5>
                 <div>
-                    <a class="btn btn-success" href="{{ route('kelurahan.create') }}"> Tambah Kelurahan</a>
+                    <a class="btn btn-success" href="{{ route('motor.create') }}"> Tambah Motor</a>
                 </div>
             </div>
             <div class="card-body">
@@ -22,30 +22,29 @@
                     <thead>
                         <tr>
                             <th>Nama</th>
-                            <th>Penduduk</th>
-                            <th>Kecamatan</th>
+                            <th>Harga</th>
+                            <th>Merek</th>
                             <th width="280px">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($kelurahans as $kelurahan)
+                        @foreach ($motors as $motor)
                             <tr>
-                                <td>{{ $kelurahan->nama }}</td>
-                                <td class="text-right">{{ $kelurahan->jml_pend }}</td>
+                                <td>{{ $motor->nama }}</td>
+                                <td class="text-right">{{ $motor->harga }}</td>
                                 <td>
-                                    @if ($kelurahan->kecamatan)
-                                        <a class="text-decoration-none"
-                                            href="{{ route('kecamatan.show', $kelurahan->kecamatan->id) }}">
-                                            {{ $kelurahan->kecamatan->nama }}
+                                    @if ($motor->merek)
+                                        <a class="text-decoration-none" href="{{ route('merek.show', $motor->merek->id) }}">
+                                            {{ $motor->merek->nama }}
                                         </a>
                                     @endif
                                 </td>
                                 <td>
-                                    <form action="{{ route('kelurahan.destroy', $kelurahan->id) }}" method="Post">
+                                    <form action="{{ route('motor.destroy', $motor->id) }}" method="Post">
                                         <a class="btn btn-secondary btn-sm"
-                                            href="{{ route('kelurahan.show', $kelurahan->id) }}">Lihat</a>
+                                            href="{{ route('motor.show', $motor->id) }}">Lihat</a>
                                         <a class="btn btn-primary btn-sm"
-                                            href="{{ route('kelurahan.edit', $kelurahan->id) }}">Ubah</a>
+                                            href="{{ route('motor.edit', $motor->id) }}">Ubah</a>
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm"
@@ -56,7 +55,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                {!! $kelurahans->links('pagination::bootstrap-5') !!}
+                {!! $motors->links('pagination::bootstrap-5') !!}
             </div>
         </div>
     </div>

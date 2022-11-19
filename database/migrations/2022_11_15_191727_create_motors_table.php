@@ -13,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('kelurahans', function (Blueprint $table) {
+        Schema::create('motors', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('kecamatan_id', false, true)->nullable()->default(null);
+            $table->bigInteger('merek_id', false, true)->nullable()->default(null);
             $table->string('nama');
-            $table->integer('jml_pend')->default(0);
+            $table->integer('harga')->default(0);
             $table->timestamps();
 
-            $table->foreign('kecamatan_id')
-                ->references('id')->on('kecamatans')
+            $table->foreign('merek_id')
+                ->references('id')->on('mereks')
                 ->nullOnDelete()
                 ->cascadeOnUpdate();
         });
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kelurahans');
+        Schema::dropIfExists('motors');
     }
 };

@@ -16,7 +16,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{ url('') }}">Data Kelurahan Di Kota Bandung</a>
+            <a class="navbar-brand" href="{{ url('') }}">Data Motor Di Kota Bandung</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -25,12 +25,12 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('home') || request()->routeIs('kelurahan.index') ? 'active' : '' }}"
-                            aria-current="page" href="{{ route('kelurahan.index') }}">Kelurahan</a>
+                        <a class="nav-link {{ request()->routeIs('home') || request()->routeIs('motor.index') ? 'active' : '' }}"
+                            aria-current="page" href="{{ route('motor.index') }}">Motor</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('kecamatan.index') ? 'active' : '' }}"
-                            aria-current="page" href="{{ route('kecamatan.index') }}">Kecamatan</a>
+                        <a class="nav-link {{ request()->routeIs('merek.index') ? 'active' : '' }}" aria-current="page"
+                            href="{{ route('merek.index') }}">Merek</a>
                     </li>
                 </ul>
             </div>

@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @section('title')
-    Data Kecamatan
+    Data Merek
 @endsection
 
 @section('content')
@@ -12,9 +12,9 @@
 
         <div class="card">
             <div class="card-header d-md-flex flex-row justify-content-between">
-                <h5 class="card-title">Data Kecamatan</h5>
+                <h5 class="card-title">Data Merek</h5>
                 <div>
-                    <a class="btn btn-success" href="{{ route('kecamatan.create') }}"> Tambah Kecamatan</a>
+                    <a class="btn btn-success" href="{{ route('merek.create') }}"> Tambah Merek</a>
                 </div>
             </div>
             <div class="card-body">
@@ -22,23 +22,21 @@
                     <thead>
                         <tr>
                             <th>Nama</th>
-                            <th>Jumlah Kelurahan</th>
-                            <th>Total Penduduk</th>
+                            <th>Jumlah Motor</th>
                             <th width="280px">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($kecamatans as $kecamatan)
+                        @foreach ($mereks as $merek)
                             <tr>
-                                <td>{{ $kecamatan->nama }}</td>
-                                <td>{{ $kecamatan->kelurahans_count }}</td>
-                                <td>{{ $kecamatan->kelurahans_sum_jml_pend ?? 0 }}</td>
+                                <td>{{ $merek->nama }}</td>
+                                <td>{{ $merek->motors_count }}</td>
                                 <td>
-                                    <form action="{{ route('kecamatan.destroy', $kecamatan->id) }}" method="Post">
+                                    <form action="{{ route('merek.destroy', $merek->id) }}" method="Post">
                                         <a class="btn btn-secondary btn-sm"
-                                            href="{{ route('kecamatan.show', $kecamatan->id) }}">Lihat</a>
+                                            href="{{ route('merek.show', $merek->id) }}">Lihat</a>
                                         <a class="btn btn-primary btn-sm"
-                                            href="{{ route('kecamatan.edit', $kecamatan->id) }}">Ubah</a>
+                                            href="{{ route('merek.edit', $merek->id) }}">Ubah</a>
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"
@@ -49,7 +47,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                {!! $kecamatans->links('pagination::bootstrap-5') !!}
+                {!! $mereks->links('pagination::bootstrap-5') !!}
             </div>
         </div>
     </div>

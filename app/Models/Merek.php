@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Kecamatan extends Model
+class Merek extends Model
 {
     use HasFactory;
     protected $fillable = ['nama'];
-    protected $table = 'kecamatans';
+    protected $table = 'mereks';
 
-    public function kelurahans()
+    public function motors()
     {
-        return $this->hasMany(Kelurahan::class, 'kecamatan_id', 'id');
+        return $this->hasMany(Motor::class, 'merek_id', 'id');
     }
 }

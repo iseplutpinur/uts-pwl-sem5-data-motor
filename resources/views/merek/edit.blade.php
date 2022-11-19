@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @section('title')
-    Tambah Kecamatan
+    Ubah Merek
 @endsection
 
 @section('content')
@@ -11,22 +11,23 @@
                 {{ session('status') }}
             </div>
         @endif
-
         <div class="card">
             <div class="card-header d-md-flex flex-row justify-content-between">
-                <h5 class="card-title">Tambah Kecamatan</h5>
+                <h5 class="card-title">Ubah Merek</h5>
                 <div>
                     <a class="btn btn-secondary" href="{{ URL::previous() }}"> Kembali</a>
                 </div>
             </div>
             <div class="card-body">
-                <form action="{{ route('kecamatan.store') }}" method="POST" enctype="multipart/form-data" id="mainform">
+                <form action="{{ route('merek.update', $merek->id) }}" method="POST" enctype="multipart/form-data"
+                    id="mainform">
                     @csrf
+                    @method('PUT')
                     <div class="row mb-3">
-                        <label for="nama" class="col-sm-2 col-form-label">Nama Kecamatan</label>
+                        <label for="nama" class="col-sm-2 col-form-label">Nama Merek</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="nama" id="nama" required
-                                placeholder="Silahkan masukan nama kecamatan">
+                            <input type="text" class="form-control" name="nama" value="{{ $merek->nama }}"
+                                id="nama" required placeholder="Silahkan masukan nama merek">
                         </div>
                         <div class="col-12">
                             @error('nama')

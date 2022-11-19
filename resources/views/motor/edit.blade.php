@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @section('title')
-    Ubah Kelurahan
+    Ubah Motor
 @endsection
 
 @section('content')
@@ -13,52 +13,52 @@
         @endif
         <div class="card">
             <div class="card-header d-md-flex flex-row justify-content-between">
-                <h5 class="card-title">Ubah Kelurahan</h5>
+                <h5 class="card-title">Ubah Motor</h5>
                 <div>
                     <a class="btn btn-secondary" href="{{ URL::previous() }}"> Kembali</a>
                 </div>
             </div>
             <div class="card-body">
-                <form action="{{ route('kelurahan.update', $kelurahan->id) }}" method="POST" enctype="multipart/form-data"
+                <form action="{{ route('motor.update', $motor->id) }}" method="POST" enctype="multipart/form-data"
                     id="mainform">
                     @csrf
                     @method('PUT')
                     <div class="row mb-3">
-                        <label for="nama" class="col-sm-2 col-form-label">Nama Kelurahan</label>
+                        <label for="nama" class="col-sm-2 col-form-label">Nama Motor</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control"value="{{ old('nama') ?? $kelurahan->nama }}"
-                                name="nama" id="nama" required placeholder="Silahkan masukan nama kelurahan">
+                            <input type="text" class="form-control"value="{{ old('nama') ?? $motor->nama }}"
+                                name="nama" id="nama" required placeholder="Silahkan masukan nama motor">
                         </div>
                     </div>
                     @error('nama')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                     @enderror
                     <div class="row mb-3">
-                        <label for="kecamatan_id" class="col-sm-2 col-form-label">Kecamatan</label>
+                        <label for="merek_id" class="col-sm-2 col-form-label">Merek</label>
                         <div class="col-sm-10">
-                            <select class="form-control" name="kecamatan_id" id="kecamatan_id" required>
-                                <option value="">Pilih Kecamatan</option>
-                                @foreach ($kecamatans as $kecamatan)
-                                    <option value="{{ $kecamatan->id }}"
-                                        {{ $kecamatan->id == (old('kecamatan_id') ?? $kelurahan->kecamatan_id) ? 'selected' : '' }}>
-                                        {{ $kecamatan->nama }}
+                            <select class="form-control" name="merek_id" id="merek_id" required>
+                                <option value="">Pilih Merek</option>
+                                @foreach ($mereks as $merek)
+                                    <option value="{{ $merek->id }}"
+                                        {{ $merek->id == (old('merek_id') ?? $motor->merek_id) ? 'selected' : '' }}>
+                                        {{ $merek->nama }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
-                    @error('kecamatan_id')
+                    @error('merek_id')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                     @enderror
 
                     <div class="row mb-3">
-                        <label for="jml_pend" class="col-sm-2 col-form-label">Penduduk Kelurahan</label>
+                        <label for="harga" class="col-sm-2 col-form-label">Harga Motor</label>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" value="{{ old('jml_pend') ?? $kelurahan->jml_pend }}"
-                                name="jml_pend" id="jml_pend" required placeholder="Silahkan masukan jml_pend kelurahan">
+                            <input type="number" class="form-control" value="{{ old('harga') ?? $motor->harga }}"
+                                name="harga" id="harga" required placeholder="Silahkan masukan harga motor">
                         </div>
                     </div>
-                    @error('jml_pend')
+                    @error('harga')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                     @enderror
 
